@@ -152,4 +152,3 @@ void imprimirAGM(const Grafo& grafo, const ResultadoAGM& resultado) {
         std::cout << "Aviso: Nem todas as cidades foram conectadas.\n";
     }
 }
-
