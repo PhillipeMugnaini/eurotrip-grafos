@@ -19,3 +19,14 @@ enable_testing()
 add_executable(teste_base tests/teste_base.cpp)
 target_link_libraries(teste_base PRIVATE eurotrip_lib)
 add_test(NAME estrutura_base COMMAND teste_base)
+
+
+# Teste do algoritmo de Prim
+add_executable(teste_prim tests/teste_prim.cpp)
+
+target_link_libraries(teste_prim PRIVATE eurotrip_lib)
+
+add_test(
+    NAME algoritmo_prim
+    COMMAND teste_prim
+)
