@@ -30,3 +30,13 @@ add_test(
     NAME algoritmo_prim
     COMMAND teste_prim
 )
+
+# Teste do algoritmo de Dijkstra
+add_executable(teste_dijkstra tests/teste_dijkstra.cpp)
+
+target_link_libraries(teste_dijkstra PRIVATE eurotrip_lib)
+
+add_test(
+    NAME algoritmo_dijkstra
+    COMMAND teste_dijkstra
+)
