@@ -175,7 +175,7 @@ int main() {
                   << mensagem << "\n\n";
 
         // 5. Exibe as cidades cadastradas.
-        
+
 std::cout << "Grafo carregado e validado!\n";
 
 int opcao;
@@ -223,7 +223,7 @@ while (true) {
             std::cout << "\n========== MATRIZ DE TEMPOS ==========\n";
             grafo.imprimirMatriz(Criterio::Tempo);
             break;
-        
+
         case 4:
             executarDijkstra(grafo, Criterio::Custo);
             break;
@@ -236,7 +236,7 @@ while (true) {
             executarDijkstra(grafo, Criterio::Tempo);
             break;
 
-        
+
         case 7: {
             std::cout << "\n========== EXECUTANDO PRIM ==========\n";
 
@@ -256,7 +256,7 @@ while (true) {
 
             break;
         }
-        
+
         case 8:
             executarAvaliacaoRoteiro(grafo);
             break;
