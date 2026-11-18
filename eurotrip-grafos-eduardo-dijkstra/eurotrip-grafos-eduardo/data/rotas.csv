@@ -1,0 +1,19 @@
+origem;destino;transporte;custo_brl;distancia_km;tempo_h;observacoes
+CWB;DUB;aviao com conexao;4100;9900;16.0;itinerario com escala e valores estimados
+CWB;ZRH;aviao com conexao;5200;10080;15.5;itinerario com escala e valores estimados
+CWB;ROM;aviao com conexao;5050;10100;16.7;itinerario com escala e valores estimados
+DUB;OSL;aviao;760;1300;2.5;estimativa academica
+DUB;PRG;aviao;650;1490;2.6;estimativa academica
+DUB;ZRH;aviao;790;1250;2.3;estimativa academica
+DUB;ROM;aviao;900;1890;3.1;estimativa academica
+DUB;ATH;aviao;1300;2860;4.3;estimativa academica
+OSL;PRG;aviao;780;1130;2.0;estimativa academica
+OSL;ZRH;aviao;920;1430;2.3;estimativa academica
+OSL;ROM;aviao;1150;2020;3.2;estimativa academica
+OSL;ATH;aviao;1350;2600;3.9;estimativa academica
+PRG;ZRH;trem;600;700;9.0;distancia e tempo de percurso aproximados
+PRG;ROM;aviao;550;920;1.9;estimativa academica
+PRG;ATH;aviao;750;1550;2.4;estimativa academica
+ZRH;ROM;trem;490;700;7.5;distancia e tempo de percurso aproximados
+ZRH;ATH;aviao;1100;1650;2.7;estimativa academica
+ROM;ATH;aviao;700;1050;2.0;estimativa academica
