@@ -1,19 +1,19 @@
 origem;destino;transporte;custo_brl;distancia_km;tempo_h;observacoes
-CWB;DUB;aviao com conexao;4100;9900;16.0;itinerario com escala e valores estimados
-CWB;ZRH;aviao com conexao;5200;10080;15.5;itinerario com escala e valores estimados
-CWB;ROM;aviao com conexao;5050;10100;16.7;itinerario com escala e valores estimados
-DUB;OSL;aviao;760;1300;2.5;estimativa academica
-DUB;PRG;aviao;650;1490;2.6;estimativa academica
-DUB;ZRH;aviao;790;1250;2.3;estimativa academica
-DUB;ROM;aviao;900;1890;3.1;estimativa academica
-DUB;ATH;aviao;1300;2860;4.3;estimativa academica
-OSL;PRG;aviao;780;1130;2.0;estimativa academica
-OSL;ZRH;aviao;920;1430;2.3;estimativa academica
-OSL;ROM;aviao;1150;2020;3.2;estimativa academica
-OSL;ATH;aviao;1350;2600;3.9;estimativa academica
-PRG;ZRH;trem;600;700;9.0;distancia e tempo de percurso aproximados
-PRG;ROM;aviao;550;920;1.9;estimativa academica
-PRG;ATH;aviao;750;1550;2.4;estimativa academica
-ZRH;ROM;trem;490;700;7.5;distancia e tempo de percurso aproximados
-ZRH;ATH;aviao;1100;1650;2.7;estimativa academica
-ROM;ATH;aviao;700;1050;2.0;estimativa academica
+CWB;DUB;aviao com conexao;2256.00;10269;18.4167;Itinerario CWB-GRU-LHR-DUB | oferta de ida em 23/11/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+CWB;ZRH;aviao com conexao;3424.00;10126;22.9167;Itinerario CWB-VCP-LIS-BCN-ZRH | oferta de ida em 25/01/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+CWB;ROM;aviao com conexao;3123.00;10069;27.0833;Itinerario CWB-GRU-MAD-FCO | oferta de ida em 15/12/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+DUB;OSL;aviao;322.83;1291;2.1667;Itinerario DUB-OSL | oferta de ida em 18/01/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+DUB;PRG;aviao;188.85;1454;2.4167;Itinerario DUB-PRG | oferta de ida em 06/01/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+DUB;ZRH;aviao;339.82;1238;2.5000;Itinerario DUB-ZRH | oferta de ida em 17/11/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+DUB;ROM;aviao;231.85;1886;3.0000;Itinerario DUB-FCO | oferta de ida em 24/11/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+DUB;ATH;aviao;492.74;2876;4.0833;Itinerario DUB-ATH | oferta de ida em 19/11/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+OSL;PRG;aviao;262.90;1140;2.0000;Itinerario OSL-PRG | oferta de ida em 05/01/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+OSL;ZRH;aviao;518.20;1426;2.3333;Itinerario OSL-ZRH | oferta de ida em 18/12/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+OSL;ROM;aviao;246.96;2046;3.3333;Itinerario OSL-FCO | oferta de ida em 31/12/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+OSL;ATH;aviao;549.38;2635;3.7500;Itinerario OSL-ATH | oferta de ida em 31/01/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+PRG;ZRH;trem;622.77;915;15.6667;Tarifa minima publicada em CZK. Ver docs/fontes-dados-eurotrip.md (PRG-ZRH).
+PRG;ROM;aviao;186.90;935;1.9167;Itinerario PRG-FCO | oferta de ida em 25/11/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+PRG;ATH;aviao;543.71;1556;2.5000;Itinerario PRG-ATH | oferta de ida em 18/02/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+ZRH;ROM;trem;540.43;828;7.0000;Tarifa minima publicada em CHF. Ver docs/fontes-dados-eurotrip.md (ZRH-ROM).
+ZRH;ATH;aviao;577.70;1639;2.5833;Itinerario ZRH-ATH | oferta de ida em 15/12/2026 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
+ROM;ATH;aviao;212.00;1085;2.0000;Itinerario FCO-ATH | oferta de ida em 01/02/2027 | distancia geodesica. Ver docs/fontes-dados-eurotrip.md.
