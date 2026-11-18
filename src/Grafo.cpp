@@ -110,7 +110,6 @@ std::string nomeCriterio(Criterio criterio) {
 }
 
 // ==== TAREFAS DO LUCAS ====
-// Primeiro: entender a base acima. Depois substituir cada TODO por codigo.
 
 void Grafo::carregarCidades(const std::string& caminho) {
     std::ifstream arquivo = abrirCsv(caminho, "cidades", "id;pais;cidade;ponto_turistico");
