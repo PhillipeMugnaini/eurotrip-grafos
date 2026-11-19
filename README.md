@@ -1,81 +1,73 @@
-# Eurotrip - Estrutura de Dados Nao Lineares (Etapa 0)
+# Eurotrip | Parte 1 - Estrutura do grafo e dados
 
-Projeto de um trio para modelar uma viagem partindo de **Curitiba, PR, Brasil**
-com destinos em **Irlanda (Dublin), Noruega (Oslo), Republica Tcheca (Praga),
-Suica (Zurique), Italia (Roma) e Grecia (Atenas)**.
+Parte do Lucas na APS2 de Estrutura de Dados Não Lineares. Este módulo organiza as cidades e as conexões de transporte que os algoritmos de Dijkstra e Prim usam no projeto integrado.
 
-**IMPORTANTE:** este repositorio e o **ponto de partida**, nao a solucao final.
-As funcoes dos algoritmos e parte da leitura/validacao do grafo tem
-`TODO` e lancam `std::logic_error` ate serem implementadas pelo grupo.
-O executavel e o teste inicial compilam e executam normalmente.
+## 1. Objetivo
 
-## Responsaveis
+Carregar os dados dos arquivos CSV, representar as conexões em um grafo ponderado, verificar a conectividade e disponibilizar a listagem das cidades, das rotas e das matrizes de pesos.
 
-- Lucas - Grafo, dados CSV, validacao e matrizes (`feature/grafo`).
-- Eduardo - Dijkstra e exibicao do caminho (`feature/dijkstra`).
-- Phillipe - Prim, AGM e integracao do menu (`feature/prim`).
+## 2. Modelo do grafo
 
-## Estrutura
+O grafo é não direcionado e utiliza listas de adjacência. Cada cidade é um vértice. Cada conexão entre duas cidades é uma aresta com três pesos independentes: custo em reais, distância em quilômetros e duração em horas.
 
-```text
-eurotrip-grafos/
-|-- include/
-|   |-- Grafo.hpp          # Contrato do grafo
-|   |-- Dijkstra.hpp       # Contrato dos caminhos minimos
-|   `-- Prim.hpp           # Contrato da AGM
-|-- src/
-|   |-- Grafo.cpp          # Base comum + TODOs do Lucas
-|   |-- Dijkstra.cpp       # TODOs do Eduardo
-|   |-- Prim.cpp           # TODOs do Phillipe
-|   `-- main.cpp           # Exemplo compilavel; depois menu do Phillipe
-|-- data/
-|   |-- cidades.csv
-|   `-- rotas.csv
-|-- tests/
-|   `-- teste_base.cpp
-|-- docs/
-|   |-- contratos.md
-|   |-- divisao.md
-|   |-- github-passo-a-passo.md
-|   `-- uso-de-ia.md
-|-- CMakeLists.txt
-`-- .gitignore
-```
+| Código | Cidade | País |
+| --- | --- | --- |
+| `CWB` | Curitiba | Brasil |
+| `ZRH` | Zurique | Suíça |
+| `OSL` | Oslo | Noruega |
+| `ROM` | Roma | Itália |
+| `ATH` | Atenas | Grécia |
+| `DUB` | Dublin | Irlanda |
+| `PRG` | Praga | República Tcheca |
 
-## Compilar, rodar e testar
+A base do projeto integrado contém sete cidades e 18 conexões. O grafo fornece os mesmos dados a Dijkstra, que encontra caminhos mínimos, e a Prim, que calcula a Árvore Geradora Mínima pelo custo.
 
-Instalar Git, CMake e compilador C++ (GCC/Clang/MSVC). No terminal do VS Code:
+## 3. Leitura e validação
+
+1. Carregar as cidades de `data/cidades.csv`. O identificador de cada cidade serve de referência para as rotas.
+2. Carregar as conexões de `data/rotas.csv` e associar os três pesos aos respectivos pares de cidades.
+3. Verificar a conectividade do grafo. A partir de uma cidade, todas as outras devem ser alcançáveis, inclusive por caminhos com vários trechos.
+4. Exibir cidades, rotas e as matrizes de custo, distância e tempo. Cada matriz mostra os pesos das conexões diretas para um critério.
+
+## 4. Arquivos da parte do Lucas
+
+| Arquivo | Papel no projeto |
+| --- | --- |
+| [`include/Grafo.hpp`](include/Grafo.hpp) | Declara a estrutura do grafo e suas operações. |
+| [`src/Grafo.cpp`](src/Grafo.cpp) | Implementa a leitura dos dados, a validação e a exibição. |
+| [`data/cidades.csv`](data/cidades.csv) | Armazena as cidades e seus identificadores. |
+| [`data/rotas.csv`](data/rotas.csv) | Armazena as conexões e os pesos de custo, distância e tempo. |
+| [`tests/teste_base.cpp`](tests/teste_base.cpp) | Testes automatizados da estrutura base do projeto. |
+| [`docs/fontes-dados-eurotrip.md`](docs/fontes-dados-eurotrip.md) | Registra as fontes, as conversões monetárias e as limitações dos dados. |
+
+## 5. Como executar no projeto integrado
+
+Com um compilador C++17 e CMake, execute os comandos a partir da raiz do repositório. O último comando é para Linux.
 
 ```bash
 cmake -S . -B build
 cmake --build build
-ctest --test-dir build --output-on-failure
+./build/eurotrip
 ```
 
-Linux/macOS: `./build/eurotrip`
-Windows com MinGW: `build\eurotrip.exe`
-Windows com MSVC: `build\Debug\eurotrip.exe`
+| Opção do menu | O que conferir |
+| --- | --- |
+| `1` | A lista exibe as sete cidades e seus identificadores. |
+| `2` | A lista exibe as 18 conexões com custo, distância e tempo. |
+| `3` | As matrizes exibem os pesos das conexões diretas para cada critério. |
 
-Resultado esperado: `Base compilada! Cidades do teste: 2` e `100% tests passed`.
+## 6. Testes da estrutura base
 
-## Como colaborar
+Depois da compilação, execute:
 
-Ver `docs/github-passo-a-passo.md`. Os cabecalhos (`include/*.hpp`) sao
-contratos compartilhados: nao alterar unilateralmente. Cada um pode
-testar seu codigo com um grafo criado manualmente, sem precisar dos CSVs.
+```bash
+ctest --test-dir build -R '^estrutura_base$' --output-on-failure
+```
 
-## Sobre os dados
+Para uma conferência manual, compare uma conexão exibida na opção `2` com a linha correspondente em `data/rotas.csv`. Use o mesmo par de cidades na opção `3` para conferir o peso em cada matriz.
 
-Os numeros em `data/rotas.csv` sao **estimativas academicas de trabalho**,
-nao precos ou itinerarios verificados. Uma aresta `aviao com conexao` pode
-incluir escalas. Pesquisar fontes e documentar os pesos antes da entrega.
+## 7. Dados e fontes
 
-## Requisitos de entrega (conforme enunciado)
+As tarifas foram pesquisadas para datas distintas e são usadas como referências acadêmicas. Os resultados calculados pelo programa dependem dos pesos dos CSVs. As fontes, os critérios de conversão e as limitações estão na [documentação dos dados](docs/fontes-dados-eurotrip.md).
 
-- C++ sem bibliotecas externas de grafos.
-- Pelo menos seis paises europeus, grafo conexo, grau minimo 3.
-- Pesos por custo, distancia e tempo e tres matrizes.
-- Menores caminhos por Dijkstra (ou outro algoritmo admissivel).
-- AGM por Prim (ou Kruskal), grafo original, resultados e conclusoes.
-- Repositorio Git com evolucao, autoria e uso de IA declarado.
-- Apresentacao de ate 10 minutos e slides em PDF/PPTX.
+A descrição do apoio de ferramentas de inteligência artificial está no [registro de uso de IA](docs/uso-de-ia.md).
