@@ -1,81 +1,77 @@
-# Eurotrip - Estrutura de Dados Nao Lineares (Etapa 0)
+# Eurotrip | Parte 2 - Dijkstra e avaliação de roteiros
 
-Projeto de um trio para modelar uma viagem partindo de **Curitiba, PR, Brasil**
-com destinos em **Irlanda (Dublin), Noruega (Oslo), Republica Tcheca (Praga),
-Suica (Zurique), Italia (Roma) e Grecia (Atenas)**.
+Parte do Eduardo na APS2 de Estrutura de Dados Não Lineares. Este módulo usa o grafo de cidades e conexões do Eurotrip para calcular caminhos mínimos e avaliar roteiros informados pelo usuário.
 
-**IMPORTANTE:** este repositorio e o **ponto de partida**, nao a solucao final.
-As funcoes dos algoritmos e parte da leitura/validacao do grafo tem
-`TODO` e lancam `std::logic_error` ate serem implementadas pelo grupo.
-O executavel e o teste inicial compilam e executam normalmente.
+## 1. Objetivo
 
-## Responsaveis
+Encontrar o melhor caminho entre duas cidades por custo, distância ou tempo. O módulo também calcula os totais de um roteiro quando o usuário já definiu a ordem das cidades.
 
-- Lucas - Grafo, dados CSV, validacao e matrizes (`feature/grafo`).
-- Eduardo - Dijkstra e exibicao do caminho (`feature/dijkstra`).
-- Phillipe - Prim, AGM e integracao do menu (`feature/prim`).
+## 2. Algoritmo de Dijkstra
 
-## Estrutura
+O grafo tem três pesos por conexão. Cada busca usa um peso de cada vez, conforme a opção escolhida no menu.
 
-```text
-eurotrip-grafos/
-|-- include/
-|   |-- Grafo.hpp          # Contrato do grafo
-|   |-- Dijkstra.hpp       # Contrato dos caminhos minimos
-|   `-- Prim.hpp           # Contrato da AGM
-|-- src/
-|   |-- Grafo.cpp          # Base comum + TODOs do Lucas
-|   |-- Dijkstra.cpp       # TODOs do Eduardo
-|   |-- Prim.cpp           # TODOs do Phillipe
-|   `-- main.cpp           # Exemplo compilavel; depois menu do Phillipe
-|-- data/
-|   |-- cidades.csv
-|   `-- rotas.csv
-|-- tests/
-|   `-- teste_base.cpp
-|-- docs/
-|   |-- contratos.md
-|   |-- divisao.md
-|   |-- github-passo-a-passo.md
-|   `-- uso-de-ia.md
-|-- CMakeLists.txt
-`-- .gitignore
-```
+| Critério | Peso minimizado |
+| --- | --- |
+| Custo | Valor total em reais |
+| Distância | Distância total em quilômetros |
+| Tempo | Duração total em horas |
 
-## Compilar, rodar e testar
+Dijkstra parte da cidade de origem e prioriza, a cada passo, o menor total acumulado conhecido. Ao encontrar uma alternativa melhor para uma cidade vizinha, atualiza o peso acumulado e registra de onde veio. Esses registros permitem reconstruir o caminho até o destino. O algoritmo requer pesos não negativos no critério selecionado.
 
-Instalar Git, CMake e compilador C++ (GCC/Clang/MSVC). No terminal do VS Code:
+## 3. Busca de caminho e avaliação de roteiro
+
+Na busca por Dijkstra, o usuário informa a origem e o destino e o programa determina a sequência de cidades. Depois de selecionar o caminho pelo critério escolhido, a saída mostra os totais de custo, distância e tempo desse mesmo caminho.
+
+Na avaliação de roteiro, o usuário informa toda a sequência. O programa verifica se cada par consecutivo tem uma conexão direta e soma os pesos dos trechos. Exemplo de sequência para avaliar no menu: `CWB → DUB → PRG`.
+
+## 4. Arquivos da parte do Eduardo
+
+| Arquivo | Papel no projeto |
+| --- | --- |
+| [`include/Dijkstra.hpp`](include/Dijkstra.hpp) | Declara as operações do módulo de Dijkstra. |
+| [`src/Dijkstra.cpp`](src/Dijkstra.cpp) | Implementa a busca de caminhos mínimos. |
+| [`tests/teste_dijkstra.cpp`](tests/teste_dijkstra.cpp) | Reúne os testes automatizados do algoritmo. |
+| [`data/cidades.csv`](data/cidades.csv) e [`data/rotas.csv`](data/rotas.csv) | Fornecem as cidades, as conexões e os pesos usados nos cálculos. |
+
+A contribuição do Eduardo inclui o algoritmo de Dijkstra, a avaliação de roteiros, a exibição dos caminhos e os testes do algoritmo.
+
+## 5. Como executar no projeto integrado
+
+Com um compilador C++17 e CMake, execute os comandos a partir da raiz do repositório. O último comando é para Linux.
 
 ```bash
 cmake -S . -B build
 cmake --build build
-ctest --test-dir build --output-on-failure
+./build/eurotrip
 ```
 
-Linux/macOS: `./build/eurotrip`
-Windows com MinGW: `build\eurotrip.exe`
-Windows com MSVC: `build\Debug\eurotrip.exe`
+| Opção do menu | O que faz |
+| --- | --- |
+| `4` | Calcula o menor caminho por custo. |
+| `5` | Calcula o menor caminho por distância. |
+| `6` | Calcula o menor caminho por tempo. |
+| `8` | Avalia um roteiro informado pelo usuário. |
 
-Resultado esperado: `Base compilada! Cidades do teste: 2` e `100% tests passed`.
+## 6. Testes do algoritmo
 
-## Como colaborar
+Depois da compilação, execute:
 
-Ver `docs/github-passo-a-passo.md`. Os cabecalhos (`include/*.hpp`) sao
-contratos compartilhados: nao alterar unilateralmente. Cada um pode
-testar seu codigo com um grafo criado manualmente, sem precisar dos CSVs.
+```bash
+ctest --test-dir build -R '^algoritmo_dijkstra$' --output-on-failure
+```
 
-## Sobre os dados
+Para uma conferência manual, rode as opções `4`, `5` e `6` de Curitiba (`CWB`) até Praga (`PRG`). Com os pesos descritos no README do projeto integrado, os resultados de referência são os seguintes.
 
-Os numeros em `data/rotas.csv` sao **estimativas academicas de trabalho**,
-nao precos ou itinerarios verificados. Uma aresta `aviao com conexao` pode
-incluir escalas. Pesquisar fontes e documentar os pesos antes da entrega.
+| Critério | Caminho | Custo | Distância | Tempo |
+| --- | --- | ---: | ---: | ---: |
+| Custo | CWB → DUB → PRG | R$ 2.444,85 | 11.723 km | 20,83 h |
+| Distância | CWB → ROM → PRG | R$ 3.309,90 | 11.004 km | 29,00 h |
+| Tempo | CWB → DUB → PRG | R$ 2.444,85 | 11.723 km | 20,83 h |
 
-## Requisitos de entrega (conforme enunciado)
+Ao avaliar a sequência `CWB → DUB → PRG` pela opção `8`, os totais esperados são R$ 2.444,85, 11.723 km e 20,83 h.
 
-- C++ sem bibliotecas externas de grafos.
-- Pelo menos seis paises europeus, grafo conexo, grau minimo 3.
-- Pesos por custo, distancia e tempo e tres matrizes.
-- Menores caminhos por Dijkstra (ou outro algoritmo admissivel).
-- AGM por Prim (ou Kruskal), grafo original, resultados e conclusoes.
-- Repositorio Git com evolucao, autoria e uso de IA declarado.
-- Apresentacao de ate 10 minutos e slides em PDF/PPTX.
+## 7. Dados e fontes
+
+Os caminhos e totais dependem dos pesos cadastrados nos CSVs. As tarifas servem como referências acadêmicas. A [documentação dos dados](docs/fontes-dados-eurotrip.md) registra as fontes, as conversões monetárias e as limitações da coleta.
+
+A descrição do apoio de ferramentas de inteligência artificial está no [registro de uso de IA](docs/uso-de-ia.md).
