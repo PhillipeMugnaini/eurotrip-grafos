@@ -34,6 +34,21 @@ A ferramenta foi utilizada como apoio ao planejamento, aprendizado de conceitos,
 - Tratamento de entradas inválidas.
 - Orientações para compilação, execução e testes.
 
+### Algoritmo de Dijkstra (Eduardo)
+
+- Apoio na implementação do algoritmo de Dijkstra em `Dijkstra.cpp`.
+- Desenvolvimento da busca de caminhos mínimos considerando três critérios independentes: custo financeiro, distância e tempo.
+- Apoio na implementação da reconstrução dos caminhos encontrados, utilizando os predecessores dos vértices.
+- Desenvolvimento da exibição e comparação dos resultados obtidos pelos diferentes critérios.
+- Orientações para compilação e execução dos arquivos utilizando C++17 e CMake.
+
+### Validação — Eduardo
+
+- Testes do algoritmo Dijkstra considerando custo, distância e tempo.
+- Verificação da reconstrução dos caminhos encontrados.
+- Verificação do tratamento de índices inválidos.
+- Compilação e execução dos testes da implementação.
+
 ### Integração dos módulos da equipe
 
 - Apoio na análise dos contratos e arquivos desenvolvidos pelos integrantes.
