@@ -42,7 +42,7 @@ A ferramenta foi utilizada como apoio ao planejamento, aprendizado de conceitos,
 - Desenvolvimento da exibição e comparação dos resultados obtidos pelos diferentes critérios.
 - Orientações para compilação e execução dos arquivos utilizando C++17 e CMake.
 
-### Validação — Eduardo
+### Validação (Eduardo)
 
 - Testes do algoritmo Dijkstra considerando custo, distância e tempo.
 - Verificação da reconstrução dos caminhos encontrados.
