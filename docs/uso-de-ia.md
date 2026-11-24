@@ -6,7 +6,7 @@ Este documento registra a utilização de ferramentas de inteligência artificia
 
 ## 2. Ferramenta utilizada
 
-**ChatGPT, desenvolvido pela OpenAI.**
+ChatGPT, desenvolvido pela OpenAI.
 
 A ferramenta foi utilizada como apoio ao planejamento, aprendizado de conceitos, desenvolvimento, revisão e testes do projeto.
 
@@ -18,6 +18,14 @@ A ferramenta foi utilizada como apoio ao planejamento, aprendizado de conceitos,
 - Definição e interpretação das interfaces compartilhadas.
 - Orientações sobre Git, branches, commits e integração.
 - Explicações sobre grafos, Dijkstra e Árvore Geradora Mínima.
+
+### Estrutura do grafo e dados (Lucas)
+
+- Apoio na organização de `Grafo.hpp` e `Grafo.cpp` e na definição das operações usadas pelos módulos de Dijkstra e Prim.
+- Orientação para estruturar `cidades.csv` e `rotas.csv`, com identificadores das cidades e pesos de custo, distância e tempo para cada conexão.
+- Explicações sobre a leitura dos CSVs, a representação do grafo por listas de adjacência e a verificação de conectividade.
+- Apoio na revisão da listagem de cidades e rotas e da exibição das matrizes de custo, distância e tempo.
+- Apoio na organização da documentação das fontes e na revisão do README da branch `feature/grafo`.
 
 ### Algoritmo de Prim (Phillipe)
 
@@ -42,7 +50,7 @@ A ferramenta foi utilizada como apoio ao planejamento, aprendizado de conceitos,
 - Desenvolvimento da exibição e comparação dos resultados obtidos pelos diferentes critérios.
 - Implementação de verificações para índices inválidos e situações em que não existe caminho entre duas cidades.
 - Apoio na criação dos testes automatizados para verificar o funcionamento do algoritmo.
-  
+
 ### Validação (Eduardo)
 
 - Testes do algoritmo Dijkstra considerando custo, distância e tempo.
@@ -83,5 +91,3 @@ A equipe permanece responsável pela correção do código entregue e pela compr
 A inteligência artificial foi utilizada como ferramenta de apoio ao desenvolvimento e à aprendizagem, incluindo a geração de trechos de código posteriormente integrados e testados.
 
 Seu uso não substitui a responsabilidade dos integrantes de compreender, explicar e demonstrar o funcionamento da aplicação.
-
-**Observação:** Os integrantes Lucas e Eduardo devem complementar este registro caso tenham utilizado ferramentas de IA em suas implementações individuais.
